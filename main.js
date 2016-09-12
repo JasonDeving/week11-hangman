@@ -100,7 +100,11 @@ keypress(process.stdin);
  
 // listen for the "keypress" event 
 process.stdin.on('keypress', function (ch, key) {
-  var letterGuessed = key.name;
+  	if(key ==  undefined) {
+  		console.log("choose a different key");
+  	} else {
+  		var letterGuessed = key.name;
+  	}
 	  checkLetters(letterGuessed);
 	  console.log(letterGuessed);
 	  roundComplete();
