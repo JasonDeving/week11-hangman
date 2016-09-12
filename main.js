@@ -39,8 +39,8 @@ function startGame () {
 	console.log("loss count", lossCount);
 
 	console.log(selectedWord);
-	console.log(letterinWord);
-	console.log(numBlanks);
+	// console.log(letterinWord);
+	// console.log(numBlanks);
 	console.log(blanksAndSuccesses)
 }
 function checkLetters(letter) {
@@ -80,14 +80,16 @@ function roundComplete() {
 		winCount++;
 		console.log("win");
 		console.log("win count: ", winCount);
-		startGame();
+		// startGame();
+		process.exit();
 	}
 	// check if user lost
 	else if(guessesLeft == 0){
 		lossCount++;
 		console.log("loser");
 		console.log("lose count: ", lossCount);
-		startGame();
+		// startGame();
+		process.exit();
 	}
 }
 // Main process
