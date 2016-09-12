@@ -1,4 +1,4 @@
-module.exports = function (letter) {
+exports.checkLetters = function (letter) {
 
 	// check if letters exists in code at all
 	var isLetterInWord = false;
