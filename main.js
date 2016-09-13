@@ -1,20 +1,22 @@
 var Word = require("./word.js");
 var words = new Word(["first", "newbie", "crunch", "three"]);
+var game = require("./game.js");
+var letters = require('./letter.js');
 var keypress = require('keypress');
 var prompt = require('prompt');
 
 // Global Vars
 var wordOptions = words.n;
-var selectedWord = "";
-var letterinWord = [];
-var numBlanks = 0;
-var blanksAndSuccesses = []; // j _ _ _ _ 
-var wrongLetters = [];
+var selectedWord = letters.selectedWord;
+var letterinWord = letters.letterinWord;
+var numBlanks = letters.numBlanks;
+var blanksAndSuccesses = letters.blankandsuccess; // j _ _ _ _ 
+var wrongLetters = wrongLetters;
 
 //gamecounters
-var winCount = 0;
-var lossCount = 0;
-var guessCount = 9;
+var winCount = game.winCount;
+var lossCount = game.lossCount;
+var guessCount = game.guessCount;
 
 // Functions 
 function startGame () {
@@ -67,6 +69,7 @@ function checkLetters(letter) {
 	}
 	console.log(blanksAndSuccesses);
 }
+
 
 function roundComplete() {
 	console.log("win", winCount, "loss", lossCount, "guess", guessesLeft);
