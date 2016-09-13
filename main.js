@@ -11,7 +11,7 @@ var selectedWord = letters.selectedWord;
 var letterinWord = letters.letterinWord;
 var numBlanks = letters.numBlanks;
 var blanksAndSuccesses = letters.blankandsuccess; // j _ _ _ _ 
-var wrongLetters = wrongLetters;
+var wrongLetters = letters.wrongLetters;
 
 //gamecounters
 var winCount = game.winCount;
