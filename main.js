@@ -78,7 +78,8 @@ function roundComplete() {
 	// document.getElementById("numGuesses").innerHTML = guessesLeft;
 	// document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
 	// document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
-	console.log("incorrect letters used: ",wrongLetters.join(","));
+	if(wrongLetters.length > 1){console.log("incorrect letters used: ",wrongLetters.join(","));}
+	
 	// check if user won
 	if(letterinWord.toString() == blanksAndSuccesses.toString()) {
 		winCount++;
