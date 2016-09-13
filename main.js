@@ -1,5 +1,5 @@
 var Word = require("./word.js");
-var words = new Word(["first", "newbie", "crunch", "three"]);
+var words = new Word(["first", "newbie", "crunch", "three", "adam", "jason"]);
 var game = require("./game.js");
 var letters = require('./letter.js');
 var keypress = require('keypress');
@@ -78,6 +78,7 @@ function roundComplete() {
 	// document.getElementById("numGuesses").innerHTML = guessesLeft;
 	// document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
 	// document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
+	console.log("incorrect letters used: ",wrongLetters.join(","));
 	// check if user won
 	if(letterinWord.toString() == blanksAndSuccesses.toString()) {
 		winCount++;
