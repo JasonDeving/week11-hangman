@@ -43,7 +43,10 @@ function startGame () {
 	console.log(blanksAndSuccesses)
 }
 
-function roundComplete() {
+
+startGame();
+
+Letters.roundComplete = function () {
 	console.log("win", winCount, "loss", lossCount, "guess", guessesLeft);
 	//update html
 
@@ -69,7 +72,6 @@ function roundComplete() {
 		process.exit();
 	}
 }
-startGame();
 
 // make `process.stdin` begin emitting "keypress" events 
 keypress(process.stdin);
@@ -83,7 +85,7 @@ process.stdin.on('keypress', function (ch, key) {
   	}
 	  Letters(letterGuessed);
 	  console.log(letterGuessed);
-	  roundComplete();
+	  Letters.roundComplete();
   if (key && key.ctrl && key.name == 'c') {
     process.stdin.pause();
   }

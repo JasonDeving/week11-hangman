@@ -6,6 +6,9 @@ exports.numBlanks = 0;
 exports.blanksAndSuccesses = [];
 exports.wrongLetters = [];
 
+exports.winCount = 0;
+exports.lossCount = 0;
+exports.guessCount = 9;
 
 function Letters(letter) {
 
@@ -33,7 +36,9 @@ function Letters(letter) {
 	} 
 	else {
 		this.wrongLetters.push(letter);
-		guessesLeft--;
+		this.guessesLeft--;
 	}
 	console.log(this.blanksAndSuccesses);
+	
 }
+
