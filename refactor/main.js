@@ -1,47 +1,48 @@
 var Word = require("./word.js");
 var words = new Word(["first", "newbie", "crunch", "three", "adam", "jason"]);
 var Letters = require("./letter");
+var startGame = require("./game.js");
 var keypress = require('../node_modules/keypress');
 
 
 //Global Vars
-var wordOptions = words.n;
-var selectedWord = Letters.selectedWord;
-var letterinWord = Letters.letterinWord;
-var numBlanks = Letters.numBlanks;
-var blanksAndSuccesses = Letters.blankandsuccess; // j _ _ _ _ 
-var wrongLetters = Letters.wrongLetters;
+GLOBAL.wordOptions = words.n;
+GLOBAL.selectedWord = Letters.selectedWord;
+GLOBAL.letterinWord = Letters.letterinWord;
+GLOBAL.numBlanks = Letters.numBlanks;
+GLOBAL.blanksAndSuccesses = Letters.blankandsuccess; // j _ _ _ _ 
+GLOBAL.wrongLetters = Letters.wrongLetters;
 
-var winCount = 0;
-var lossCount = 0;
-var guessCount = 9;
+GLOBAL.winCount = 0;
+GLOBAL.lossCount = 0;
+GLOBAL.guessCount = 9;
 
-function startGame () {
-	selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
-	letterinWord = selectedWord.split("");
-	numBlanks = letterinWord.length;
+// function startGame () {
+// 	selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+// 	letterinWord = selectedWord.split("");
+// 	numBlanks = letterinWord.length;
 
-	guessesLeft = 9;
-	wrongLetters = [];
-	blanksAndSuccesses = [];
+// 	guessesLeft = 9;
+// 	wrongLetters = [];
+// 	blanksAndSuccesses = [];
 
-	//populated blanks and success with right number of blanks
+// 	//populated blanks and success with right number of blanks
 
-	for (var i = 0; i < numBlanks; i++) {
-		blanksAndSuccesses.push("_")
-	}
+// 	for (var i = 0; i < numBlanks; i++) {
+// 		blanksAndSuccesses.push("_")
+// 	}
 
-	//change html to reflect round conditions
-	console.log(blanksAndSuccesses.join(" "));
-	console.log("guess left: ", guessesLeft);
-	console.log("win count: ", winCount);
-	console.log("loss count", lossCount);
+// 	//change html to reflect round conditions
+// 	console.log(blanksAndSuccesses.join(" "));
+// 	console.log("guess left: ", guessesLeft);
+// 	console.log("win count: ", winCount);
+// 	console.log("loss count", lossCount);
 
-	console.log(selectedWord);
-	// console.log(letterinWord);
-	// console.log(numBlanks);
-	console.log(blanksAndSuccesses)
-}
+// 	console.log(selectedWord);
+// 	// console.log(letterinWord);
+// 	// console.log(numBlanks);
+// 	console.log(blanksAndSuccesses)
+// }
 
 
 startGame();

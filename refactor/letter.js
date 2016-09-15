@@ -12,33 +12,33 @@ exports.guessCount = 9;
 
 function Letters(letter) {
 
-	this.selectedWord = "";
-	this.letterinWord = [];
-	this.numBlanks = 0;
-	this.blanksAndSuccesses = []; // j _ _ _ _ 
-	this.wrongLetters = [];
-	this.guessesLeft = 9;
+	// this.selectedWord = "";
+	// this.letterinWord = [];
+	// this.numBlanks = 0;
+	// this.blanksAndSuccesses = []; // j _ _ _ _ 
+	// this.wrongLetters = [];
+	// this.guessesLeft = 9;
 	// check if letters exists in code at all
 	var isLetterInWord = false;
-	for (var i = 0; i < this.numBlanks; i++) {
+	for (var i = 0; i < numBlanks; i++) {
 		if(selectedWord[i] == letter) {
 			isLetterInWord = true;
 		}
 	}
 
 	// check where the word exists , then populate out blankandsuccess array.
-	if(this.isLetterInWord) {
-		for (var i = 0; i < this.numBlanks; i++) {
-			if(this.selectedWord[i] == letter) {
-				this.blanksAndSuccesses[i] = letter;
+	if(isLetterInWord) {
+		for (var i = 0; i < numBlanks; i++) {
+			if(selectedWord[i] == letter) {
+				blanksAndSuccesses[i] = letter;
 			}
 		} 
 	} 
 	else {
-		this.wrongLetters.push(letter);
-		this.guessesLeft--;
+		wrongLetters.push(letter);
+		guessesLeft--;
 	}
-	console.log(this.blanksAndSuccesses);
-	
+	console.log(blanksAndSuccesses);
+
 }
 
