@@ -1,77 +1,53 @@
 var Word = require("./word.js");
 var words = new Word(["first", "newbie", "crunch", "three", "adam", "jason"]);
-var game = require("./game.js");
-var letters = require('./letter.js');
+var Letters = require("./letter");
+var startGame = require("./game.js");
 var keypress = require('keypress');
-var prompt = require('prompt');
-
-// Global Vars
-var wordOptions = words.n;
-var selectedWord = letters.selectedWord;
-var letterinWord = letters.letterinWord;
-var numBlanks = letters.numBlanks;
-var blanksAndSuccesses = letters.blankandsuccess; // j _ _ _ _ 
-var wrongLetters = letters.wrongLetters;
-
-//gamecounters
-var winCount = game.winCount;
-var lossCount = game.lossCount;
-var guessCount = game.guessCount;
-
-// Functions 
-function startGame () {
-	selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
-	letterinWord = selectedWord.split("");
-	numBlanks = letterinWord.length;
-
-	guessesLeft = 9;
-	wrongLetters = [];
-	blanksAndSuccesses = [];
-
-	//populated blanks and success with right number of blanks
-
-	for (var i = 0; i < numBlanks; i++) {
-		blanksAndSuccesses.push("_")
-	}
-
-	//change html to reflect round conditions
-	console.log(blanksAndSuccesses.join(" "));
-	console.log("guess left: ", guessesLeft);
-	console.log("win count: ", winCount);
-	console.log("loss count", lossCount);
-
-	console.log(selectedWord);
-	// console.log(letterinWord);
-	// console.log(numBlanks);
-	console.log(blanksAndSuccesses)
-}
-function checkLetters(letter) {
-
-	// check if letters exists in code at all
-	var isLetterInWord = false;
-	for (var i = 0; i < numBlanks; i++) {
-		if(selectedWord[i] == letter) {
-			isLetterInWord = true;
-		}
-	}
-
-	// check where the word exists , then populate out blankandsuccess array.
-	if(isLetterInWord) {
-		for (var i = 0; i < numBlanks; i++) {
-			if(selectedWord[i] == letter) {
-				blanksAndSuccesses[i] = letter;
-			}
-		} 
-	} 
-	else {
-		wrongLetters.push(letter);
-		guessesLeft--;
-	}
-	console.log(blanksAndSuccesses);
-}
 
 
-function roundComplete() {
+//Global Vars
+GLOBAL.wordOptions = words.n;
+GLOBAL.selectedWord = Letters.selectedWord;
+GLOBAL.letterinWord = Letters.letterinWord;
+GLOBAL.numBlanks = Letters.numBlanks;
+GLOBAL.blanksAndSuccesses = Letters.blankandsuccess; // j _ _ _ _ 
+GLOBAL.wrongLetters = Letters.wrongLetters;
+
+GLOBAL.winCount = 0;
+GLOBAL.lossCount = 0;
+GLOBAL.guessCount = 9;
+
+// function startGame () {
+// 	selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+// 	letterinWord = selectedWord.split("");
+// 	numBlanks = letterinWord.length;
+
+// 	guessesLeft = 9;
+// 	wrongLetters = [];
+// 	blanksAndSuccesses = [];
+
+// 	//populated blanks and success with right number of blanks
+
+// 	for (var i = 0; i < numBlanks; i++) {
+// 		blanksAndSuccesses.push("_")
+// 	}
+
+// 	//change html to reflect round conditions
+// 	console.log(blanksAndSuccesses.join(" "));
+// 	console.log("guess left: ", guessesLeft);
+// 	console.log("win count: ", winCount);
+// 	console.log("loss count", lossCount);
+
+// 	console.log(selectedWord);
+// 	// console.log(letterinWord);
+// 	// console.log(numBlanks);
+// 	console.log(blanksAndSuccesses)
+// }
+
+
+startGame();
+
+Letters.roundComplete = function () {
 	console.log("win", winCount, "loss", lossCount, "guess", guessesLeft);
 	//update html
 
@@ -97,10 +73,6 @@ function roundComplete() {
 		process.exit();
 	}
 }
-// Main process
-// Init Code
-startGame();
-
 
 // make `process.stdin` begin emitting "keypress" events 
 keypress(process.stdin);
@@ -112,9 +84,9 @@ process.stdin.on('keypress', function (ch, key) {
   	} else {
   		var letterGuessed = key.name;
   	}
-	  checkLetters(letterGuessed);
+	  Letters(letterGuessed);
 	  console.log(letterGuessed);
-	  roundComplete();
+	  Letters.roundComplete();
   if (key && key.ctrl && key.name == 'c') {
     process.stdin.pause();
   }
