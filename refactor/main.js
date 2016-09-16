@@ -61,16 +61,16 @@ Letters.roundComplete = function () {
 		winCount++;
 		console.log("win");
 		console.log("win count: ", winCount);
-		// startGame();
-		process.exit();
+		startGame();
+		// process.exit();
 	}
 	// check if user lost
 	else if(guessesLeft == 0){
 		lossCount++;
 		console.log("loser");
 		console.log("lose count: ", lossCount);
-		// startGame();
-		process.exit();
+		startGame();
+		// process.exit();
 	}
 }
 
